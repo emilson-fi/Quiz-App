@@ -1,0 +1,40 @@
+
+<div class="">
+	<div class="row">
+		<div class="col-xs-12">
+			<h1>Turtle facts quiz</h1>
+			<h2>Good Luck!</h2>
+			<h2>Progress </h2>
+			<div class="progress">
+				<div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin='1' aria-valuemax='100' ng-style="{'width': quizCtrl.progress}">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="row">
+		<div class="col-xs-12 well well-md ">
+			<h3>Question</h3>
+			<div class="row">
+				<div class="col-xs-12">
+					 
+					<question questions="quizCtrl.questions" active="quizCtrl.activeQuestion" selected="quizCtrl.getSelected(index)"></question>
+					
+					<div class="row">
+						<div class="col-xs-12">
+							<button ng-show="!quizCtrl.lastQuestion" 
+									class="btn btn-warning " 
+									ng-click="quizCtrl.nextQuestion()">Next Question</button>
+
+							<button ng-show="quizCtrl.lastQuestion" 
+									class="btn btn-success  pull-right" 
+									ng-click="quizCtrl.finish()"
+									ui-sref="result">Finish</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

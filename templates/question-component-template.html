@@ -1,0 +1,26 @@
+
+
+<h4>{{ questionCtrl.active + 1}}. {{questionCtrl.questions[questionCtrl.active].text}}</h4>
+
+<div class="row" ng-if="questionCtrl.questions[questionCtrl.active].type === 'text'">
+	<div class="col-sm-6" 
+		 ng-repeat="choice in questionCtrl.questions[questionCtrl.active].possibilities">
+		<h4 ng-click="questionCtrl.selected({index: $index})" 
+		   class="answer"  
+		   ng-class="{'answer-selected': questionCtrl.questions[questionCtrl.active].selected === $index}"
+		    >{{choice.answer}}</h4>
+		
+	</div>
+</div>
+
+<div class="row" ng-if="questionCtrl.questions[questionCtrl.active].type === 'image'">
+	<div class="col-sm-6 fix" 
+		 ng-repeat="choice in questionCtrl.questions[questionCtrl.active].possibilities">
+		<img ng-click="questionCtrl.selected({index: $index})" 
+		   class="image-answer img-rounded"  
+		   ng-class="{'answer-selected': questionCtrl.questions[questionCtrl.active].selected === $index}"
+		   ng-src="{{choice.answer}}">
+	</div>
+</div>
+
+{{questionCtrl.markQuiz()}}

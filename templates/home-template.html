@@ -1,0 +1,72 @@
+<div  ng-controller="listController as list">
+	<div class="row">
+		<div class="col-xs-12">
+			<div class="page-header">
+				<h1>Turtle Quiz</h1>
+				<h2>Learn about turtles</h2>
+			</div>		
+			<form class="form-inline well well-sm clearfix">
+				<span class="glyphicon glyphicon-search"></span>
+				
+				<input type="text" ng-model="list.search" class="form-control" placeholder="Search">
+				
+				<button ui-sref="quiz" class="btn btn-warning pull-right"><strong>Start Quiz</strong></button>
+			</form>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-sm-6" ng-repeat="turtle in list.turtleData | filter: list.search">
+		
+				<div class="row">
+					<div class="well well-sm col-sm-12">
+					<div class="col-md-6">
+						<img ng-src="{{turtle.image_url}}" class="img-rounded img-responsive">
+					</div>
+					<div class="col-md-6">
+						<h4>{{turtle.type}}</h4>
+						<p><strong>Locations: </strong>{{turtle.locations}}</p>
+						<p><strong>Size: </strong>{{turtle.size}}</p>
+						<p><strong>Lifespan: </strong>{{turtle.lifespan}}</p>
+						<p><strong>Diet: </strong>{{turtle.diet}}</p>
+						<button class="btn btn-primary pull-right" 
+								data-toggle="modal" 
+								data-target="#turtle-info"
+								ng-click="list.currentActiveTurtle(turtle)">Learn More
+					    </button>
+					</div>
+					</div>
+				</div>
+			
+		</div>
+	</div>
+	<div class="modal" id="turtle-info"> 
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h2>{{list.activeTurtle.type}}</h2>
+				</div>
+				<div class="modal-body">
+					<div class="row">
+						<div class="col-xs-8 col-xs-offset-2">
+							<img ng-src="{{list.activeTurtle.image_url}}" class="img-rounded img-responsive">
+						</div>
+					</div>
+					<div class="row top-buffer">
+						<div class="col-md-6">
+							<h4>{{list.activeTurtle.type}}</h4>
+							<p><strong>Locations: </strong>{{list.activeTurtle.locations}}</p>
+							<p><strong>Size: </strong>{{list.activeTurtle.size}}</p>
+							<p><strong>Lifespan: </strong>{{list.activeTurtle.lifespan}}</p>
+							<p><strong>Diet: </strong>{{list.activeTurtle.diet}}</p>
+						</div>
+						<div class="col-xs-12 top-buffer">
+							<p>{{list.activeTurtle.description}}</p>
+							<button data-dismiss="modal" class="btn btn-danger pull-right">Close</button>
+						</div>
+					</div>
+				</div> 
+			</div>
+		</div>
+	</div>
+
+</div>

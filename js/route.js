@@ -24,7 +24,16 @@
 					url:'/result',
 					templateUrl: 'templates/result-template.html',
 					controller: 'ResultController',
-					controllerAs: 'resultCtrl'
+					controllerAs: 'resultCtrl',
+					resolve: {
+						resultItems: ['DataService', function(DataService){
+							return DataService.getQuestions();
+						}],
+
+						correctAnswers: ['DataService', function(DataService){
+							return DataService.getCorrectAnswers();
+						}]
+					}
 				});
 			
 

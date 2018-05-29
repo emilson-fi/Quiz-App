@@ -3,27 +3,23 @@
 	angular.module('turtleFacts')
 	.controller('ResultController', ResultController);
 
-	ResultController.$inject = ['DataService'];
-	function ResultController(DataService){
+	ResultController.$inject = ['DataService', 'resultItems', 'correctAnswers'];
+	function ResultController(DataService, resultItems, correctAnswers){
 		var resultCtrl = this;
 
+		resultCtrl.resultItems = resultItems;
+		resultCtrl.correctAnswers = correctAnswers;
+		
 
-
-		DataService.getQuestions().then(function(data){
-			resultCtrl.questions =  data;
-
-		});
-
+		console.log(resultItems);
 		resultCtrl.markQuiz = function(){
-			for(var i = 0; i < resultCtrl.questions.length - 1; i++){
-				if (resultCtrl.questions[i].selected === resultCtrl.correctAnswers.answers[i]) {
-					console.log("correct");
-					resultCtrl.questions[i].correct = true;
+
+			for(var i = 0; i < resultCtrl.resultItems.length - 1; i++){
+				if (resultCtrl.resultItems[i].selected === resultCtrl.correctAnswers.correct_answers[i]) {
+					resultCtrl.resultItems[i].correct = true;
 				}
 			}
-			console.log(DataService.questions)
 		}
-	
 
 	}
 })();

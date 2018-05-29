@@ -18,7 +18,6 @@
 
 		service.getQuestions = function(){
 			return $http.get("data/quiz-questions.json").then(function(response){
-				service.questions = response.data
 				return response.data;
 			});
 			

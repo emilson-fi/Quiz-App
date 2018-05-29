@@ -12,8 +12,7 @@
 			},
 			controller: QuestionCtrl,
 			controllerAs: 'questionCtrl',
-		
-		});
+		}); 
 
 	function QuestionCtrl(){
 		var questionCtrl = this;
